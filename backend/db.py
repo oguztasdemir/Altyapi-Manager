@@ -497,17 +497,7 @@ def init_db():
                        ("exp-2", "Stopaj ve Gelir Vergisi Ödemesi", "Vergi", 1200.0, "2026-06-15", "Gider"))
         cursor.execute("INSERT INTO expenses (id, description, category, amount, date, type) VALUES (?, ?, ?, ?, ?, ?)",
                        ("exp-3", "Elektrik & Su Faturası", "Fatura", 650.0, "2026-06-10", "Gider"))
-                       
-    # Seed default kits if empty
-    cursor.execute("SELECT COUNT(*) as count FROM kits")
-    if cursor.fetchone()["count"] == 0:
-        cursor.execute("INSERT INTO kits (id, player_id, size, number, status, notes) VALUES (?, ?, ?, ?, ?, ?)",
-                       ("kit-1", "player-1", "M", 10, "Teslim Edildi", "Arda Güler forması"))
-        cursor.execute("INSERT INTO kits (id, player_id, size, number, status, notes) VALUES (?, ?, ?, ?, ?, ?)",
-                       ("kit-2", "player-2", "L", 9, "Beklemede", "Endrick forması hazırlanıyor"))
 
-
-    
     # Check template data
     cursor.execute("SELECT COUNT(*) as count FROM teams")
     if cursor.fetchone()["count"] == 0:
@@ -582,6 +572,14 @@ def init_db():
         # Seed Injury History
         cursor.execute("INSERT INTO injuries (id, player_id, injury_type, start_date, end_date, notes) VALUES (?, ?, ?, ?, ?, ?)", ("inj-1", "player-1", "Ayak Bileği Burkulması", "2026-04-10", "2026-04-25", "Antrenmanda darbe aldı."))
         cursor.execute("INSERT INTO injuries (id, player_id, injury_type, start_date, end_date, notes) VALUES (?, ?, ?, ?, ?, ?)", ("inj-2", "player-2", "Hamstring Çekmesi", "2026-05-02", "2026-05-18", "Hafif yırtık tespit edildi."))
+
+    # Seed default kits if empty (after players exist)
+    cursor.execute("SELECT COUNT(*) as count FROM kits")
+    if cursor.fetchone()["count"] == 0:
+        cursor.execute("INSERT INTO kits (id, player_id, size, number, status, notes) VALUES (?, ?, ?, ?, ?, ?)",
+                       ("kit-1", "player-1", "M", 10, "Teslim Edildi", "Arda Güler forması"))
+        cursor.execute("INSERT INTO kits (id, player_id, size, number, status, notes) VALUES (?, ?, ?, ?, ?, ?)",
+                       ("kit-2", "player-2", "L", 9, "Beklemede", "Endrick forması hazırlanıyor"))
         
     # Create database indexes for performance optimization
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_players_team ON players(team_id);")
