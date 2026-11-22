@@ -1,5 +1,8 @@
 # Altyapı Manager — Spor Kulübü, Taktik & Oyuncu Yönetim Sistemi
 
+[![CI Tests](https://github.com/oguztasdemir/Altyapi-Manager/actions/workflows/ci.yml/badge.svg)](https://github.com/oguztasdemir/Altyapi-Manager/actions/workflows/ci.yml)
+
+
 > **Rozet / Statü:** Açık Kaynak Sistem | **Kategori:** Web Tabanlı Spor Yönetim Platformu
 
 **Öne Çıkan Metrik / Başarım:** 📋 İnteraktif Taktik Tahtası & Oyuncu Karnesi
@@ -117,3 +120,29 @@ Bu projeyle ilgili teknik görüşmelerde, kod incelemelerinde veya proje sunuml
 * [ ] **Kapsayıcı Desteği (Dockerization):** Uygulamanın ve bağımlılıklarının izole bir konteyner yapısına alınması.
 * [ ] **Gelişmiş Metrik & Loglama:** Olası hataların ve performans darboğazlarının izlenebilmesi için yapılandırılmış loglama altyapısı.
 * [ ] **Otomatik Test Süreçleri:** Temel fonksiyonlar için birim ve entegrasyon testlerinin genişletilmesi.
+
+
+---
+
+## Ekran Görüntüleri
+
+### Dashboard Genel Bakis
+![Dashboard Genel Bakis](docs/screenshots/01_dashboard_genel_bakis.png)
+
+### Dashboard Squad
+![Dashboard Squad](docs/screenshots/01_dashboard_squad.png)
+
+### Kadro Ve Profiller
+![Kadro Ve Profiller](docs/screenshots/02_kadro_ve_profiller.png)
+
+
+---
+
+## Yerel Testler
+
+Projenin temel çalışma ve sözdizimi doğrulama testlerini çalıştırmak için:
+
+```bash
+pip install pytest
+pytest tests -v
+```

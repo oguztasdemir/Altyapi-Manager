@@ -16,3 +16,6 @@ __pycache__/
 *.pyc
 .vscode/
 .idea/
+
+# Local scratch & cache
+scratch/
